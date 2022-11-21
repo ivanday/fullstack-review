@@ -8,11 +8,13 @@ let repoSchema = mongoose.Schema({
   // user id
   // repo name
   // repo url
-  id: Number,
-  username: String,
-  userID: Number,
-  name: String,
-  url: String
+  // stargazers
+  'id': Number,
+  'username': String,
+  'userID': Number,
+  'name': String,
+  'url': String,
+  'stargazers': Number
 });
 
 let Repo = mongoose.model('Repo', repoSchema);
