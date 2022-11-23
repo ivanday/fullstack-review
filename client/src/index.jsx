@@ -20,11 +20,29 @@ class App extends React.Component {
       method: 'POST',
       data: {data: term},
       type: 'plain/text',
-      error: (result, status, err) => console.log(err)
+      error: (result, status, err) => console.log(err),
+      success: () => {
+        console.log('success');
+        this.get();
+      }
+    })
+  }
+
+  get () {
+    console.log('get request...');
+    $.ajax({
+      url: '/repos',
+      method: 'GET',
+      type: 'application/json',
+      error: (result, status, err) => console.log(status, err),
+      success: (response) => {
+        this.setState({
+          repos: response
+        })
+        console.log(response);
+        console.log(this.state);
+      }
     });
-    // $.post('/repos', 'test', (data, textStatus, jqHXR) => {
-    //   console.log('success!');
-    // }).then(console.log('hitting promise'));
   }
 
   render () {
